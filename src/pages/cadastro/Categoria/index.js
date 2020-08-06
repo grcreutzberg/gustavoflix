@@ -4,15 +4,7 @@ import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
 
-function CadastroCategoria() {
-  const valoresIniciais = {
-    titulo: '',
-    descricao: '',
-    cor: '#DB202C',
-
-  };
-  // const [categorias, setCategorias] = useState([{cor: "#DB202C", descricao: "Uma descrição para a c…", titulo: 'Teste' }]);
-  const [categorias, setCategorias] = useState([]);
+function useForm(valoresIniciais) {
   const [values, setValues] = useState(valoresIniciais);
 
   function setValue(key, value) {
@@ -30,6 +22,30 @@ function CadastroCategoria() {
       event.target.value,
     );
   }
+
+  function clearForm() {
+    setValue(valoresIniciais);
+  }
+
+  return {
+    values,
+    valueChange,
+    clearForm,
+  };
+}
+
+function CadastroCategoria() {
+  const valoresIniciais = {
+    titulo: '',
+    descricao: '',
+    cor: '#DB202C',
+
+  };
+
+  const { values, valueChange, clearForm } = useForm(valoresIniciais);
+
+  // const [categorias, setCategorias] = useState([{cor: "#DB202C", descricao: "Uma descrição para a c…", titulo: 'Teste' }]);
+  const [categorias, setCategorias] = useState([]);
 
   useEffect(() => {
     const URL = window.location.hostname.includes('localhost') ? 'http://localhost:8080/categorias' : 'https://devgustavoflix.herokuapp.com/categorias';
@@ -60,7 +76,7 @@ function CadastroCategoria() {
             values,
           ]);
 
-          setValues(valoresIniciais);
+          clearForm(valoresIniciais);
         }}
       >
 
