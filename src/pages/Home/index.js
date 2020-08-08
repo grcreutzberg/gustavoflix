@@ -10,8 +10,8 @@ function Home() {
 
   useEffect(() => {
     // http://localhost:8080/categorias?_embed=videos
-    categoriasRepository.getAllCategoriesWhithMovie().then((CategoriesWhithMovie) => {
-      setDados(CategoriesWhithMovie);
+    categoriasRepository.getAllCategoriesWhithVideo().then((CategoriesWhithVideo) => {
+      setDados(CategoriesWhithVideo);
     }).catch((err) => {
       console.log(err.message);
     });
