@@ -9,7 +9,7 @@ O projeto teve como objetivo recriar layout e design da plataforma Netflix, tamb
 O projeto foi desenvolvido usando a tecnologia ReactJS. Foram aplicados diversos conceitos como criação de componentes, forms, navigation, entre outros.
 
 
-![](../gustavoflix.png)
+![](gustavoflix.png)
 
 ## Instalação
 ```sh
